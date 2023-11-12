@@ -1,8 +1,8 @@
 package com.springland365.javadocker101;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.Duration;
 
 @RestController
 @RequestMapping("/")
@@ -11,5 +11,18 @@ public class HelloController {
     @GetMapping
     public String hello(){
         return "Hello World";
+    }
+
+
+    @PostMapping
+    public String hello(@RequestBody  Person person) {
+
+        try {
+            Thread.sleep(Duration.ofMinutes(20));
+            return String.format(" Hello %s %s", person.firstName, person.lastName);
+        }
+        catch(Exception ex){
+            return ex.getMessage() ;
+        }
     }
 }
