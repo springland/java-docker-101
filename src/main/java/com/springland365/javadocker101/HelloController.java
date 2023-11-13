@@ -18,7 +18,7 @@ public class HelloController {
     public String hello(@RequestBody  Person person) {
 
         try {
-            Thread.sleep(Duration.ofMinutes(20));
+          //  Thread.sleep(Duration.ofMinutes(20));
             return String.format(" Hello %s %s", person.firstName, person.lastName);
         }
         catch(Exception ex){
