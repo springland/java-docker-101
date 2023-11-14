@@ -4,8 +4,8 @@ WORKDIR /app
 COPY . .
 RUN mvn -Pnative native:compile
 
-FROM scratch
-WORKDIR /app
+FROM ubuntu:latest
+
 EXPOSE 8080
-COPY --from=build  /app/target/javadocker101 /app/javadocker101
-ENTRYPOINT ["./javadocker101"]
+COPY --from=build  /app/target/javadocker101 /javadocker101
+CMD ["/javadocker101"]
