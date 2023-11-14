@@ -15,8 +15,7 @@ However it does not work
 docker run \
 -v /var/run/docker.sock:/var/run/docker.sock \
 -v $PWD:/workspace -w /workspace \
---env BP_JVM_VERSION=21 \
-buildpacksio/pack build javadocker101:buildpack --builder  paketobuildpacks/builder:full
+buildpacksio/pack build javadocker101:buildpack  --env BP_JVM_VERSION=21 --builder  paketobuildpacks/builder:full
 
 
 ### heroku
