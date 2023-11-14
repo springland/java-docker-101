@@ -15,17 +15,17 @@ However it does not work
 docker run \
 -v /var/run/docker.sock:/var/run/docker.sock \
 -v $PWD:/workspace -w /workspace \
-buildpacksio/pack build javadocker101:buildpack  --env BP_JVM_VERSION=21 --builder  paketobuildpacks/builder:full
+buildpacksio/pack build javadocker101:buildpack  --env BP_JVM_VERSION=21 --builder   paketobuildpacks/builder-jammy-base
 
 
 ### heroku
 
-heroku default jdk is 11
+system.properties set jvm version
 
 docker run \
 -v /var/run/docker.sock:/var/run/docker.sock \
 -v $PWD:/workspace -w /workspace \
-buildpacksio/pack build javadocker101:buildpack --builder   heroku/builder:22
+buildpacksio/pack build javadocker101:heroku --env BP_JVM_VERSION=21 --builder   heroku/builder:22
 
 
 ## Manual build
@@ -39,6 +39,7 @@ D:\tools\pack\pack.exe build javadocker101:buildpack  --env BP_JVM_VERSION=21  -
 
 ## Run
 
-docker run -p 8080:8080 javadocker101:buildpack
+docker run --rm -p 8080:8080 javadocker101:buildpack
 
+docker run --rm -p 8080:8080 javadocker101:heroku
 curl http://localhost:8080
